@@ -1,0 +1,33 @@
+/* ==UserStyle==
+@name           Custom colours for Github issue tasks's indicator
+@namespace      github.com/0x5c/userstyles
+@version        1.0.0
+@description    Simple userstyle ot customise the colour of Github's issue tasks tracker
+@author         0x5c
+@preprocessor   stylus
+
+@var color progColourLight "Colour for progress" #01a2a8
+@var color trackColourLight "Colour for track" #d4d8dd
+@var color progColourDark "Colour for progress (dark theme)" #01d5dd
+@var color trackColourDark "Colour for track (dark theme)" #4c5661
+==/UserStyle== */
+@-moz-document domain("github.com") {
+    svg circle[stroke="var(--color-border-info)"] {
+        stroke: var(--progColour);
+    }
+    svg circle[stroke="var(--color-border-primary)"] {
+        stroke: var(--trackColour);
+    }
+
+    [data-color-mode=dark][data-dark-theme*=dark],
+    [data-color-mode=light][data-light-theme*=dark] {
+        --progColour: progColourDark;
+        --trackColour: trackColourDark;
+    }
+
+    [data-color-mode=dark][data-dark-theme*=light],
+    [data-color-mode=light][data-light-theme*=light] {
+        --progColour: progColourLight;
+        --trackColour: trackColourLight;
+    }
+}
