@@ -1,0 +1,21 @@
+/* ==UserStyle==
+@name           Square avatars for Github
+@namespace      github.com/0x5c/userstyles
+@version        1.0.0
+@description    Simple style to make github avatar square with customisable radius.
+@author         0x5c
+@preprocessor stylus
+
+@var text borderRadius "Avatar border radius (in px or %)" 6px
+==/UserStyle== */
+@-moz-document domain("github.com") {
+    .avatar-user {
+        background-color: var(--color-avatar-bg);
+        border-radius: borderRadius !important;
+        box-shadow: 0 0 0 1px var(--color-avatar-border);
+        flex-shrink: 0;
+        line-height: 1;
+        overflow: hidden;
+        vertical-align: middle;
+    }
+}
