@@ -10,11 +10,24 @@
 @var range borderAlphaDefault "Transparency (alpha) of the border" [25, 0, 100, 1]
 ==/UserStyle== */
 @-moz-document domain("github.com") {
+
+    /* Normal labels like in the classical issue views */
     [data-color-mode=dark][data-dark-theme*=dark] .hx_IssueLabel,
     [data-color-mode=light][data-light-theme*=dark] .hx_IssueLabel {
         --lightness-threshold: 0.453;
         --border-threshold: calc(var(--borderThreshold) / 100);
-        --border-alpha: max(0, min(calc(0 - var(--perceived-lightness)*100 + var(--border-threshold)*100), calc(var(--borderAlphaDefault)/100)));
+        --border-alpha: max(0, min(calc(0 - var(--perceived-lightness) * 100 + var(--border-threshold) * 100), calc(var(--borderAlphaDefault) / 100)));
+        background: rgb(var(--label-r), var(--label-g), var(--label-b));
+        border-color: hsla(var(--label-h), calc(var(--label-s) * 99%), calc((var(--label-l) + 25) * 99%), var(--border-alpha));
+        color: hsl(0, 0%, calc(var(--lightness-switch) * 100%));
+    }
+
+    /* Issue labels in the new Projects */
+    [data-color-mode=dark][data-dark-theme*=dark] *[class^="Label-sc-"],
+    [data-color-mode=light][data-light-theme*=dark] *[class^="Label-sc-"] {
+        --lightness-threshold: 0.453;
+        --border-threshold: calc(var(--borderThreshold) / 100);
+        --border-alpha: max(0, min(calc(0 - var(--perceived-lightness) * 100 + var(--border-threshold) * 100), calc(var(--borderAlphaDefault) / 100)));
         background: rgb(var(--label-r), var(--label-g), var(--label-b));
         border-color: hsla(var(--label-h), calc(var(--label-s) * 99%), calc((var(--label-l) + 25) * 99%), var(--border-alpha));
         color: hsl(0, 0%, calc(var(--lightness-switch) * 100%));
